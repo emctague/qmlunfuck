@@ -1,12 +1,3 @@
-# type unfuck
-# -----------
-# This python script deals with the issue of Qt Creator not being able to recognize element types
-# registered using 'QML_ELEMENT'.
-#
-# It does so by generating a header, 'myprojectname_metatypes.h'.
-# Include this header ONLY in main.cpp, and then call `registerTypes()` first thing in `main`.
-# Then, Qt Creator will stop whining.
-
 import sys
 import json
 

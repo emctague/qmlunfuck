@@ -1,6 +1,5 @@
 isEmpty(QML_IMPORT_VERSION): \
     QML_IMPORT_VERSION = $$IMPORT_VERSION
-
 # from moc.prf
 isEmpty(QML_IMPORT_MAJOR_VERSION):!isEmpty(QML_IMPORT_VERSION): \
     QML_IMPORT_MAJOR_VERSION = $$section(QML_IMPORT_VERSION, ., 0, 0)
@@ -38,11 +37,11 @@ UNFK_TYPEREGISTRATIONS = $${UNFK_TARGET_BASENAME}_qmlunfuck$${first(QMAKE_EXT_CP
 
 qmlunfuck.CONFIG += combine
 qmlunfuck.commands = \
-    python3 $$PWD/qmlunfuck.py ${QMAKE_FILE_IN} ${QMAKE_FILE_OUT}
+    python3 $$PWD/qmlunfuck.py ${QMAKE_FILE_IN} ${QMAKE_FILE_OUT} $$QML_IMPORT_NAME $$QML_IMPORT_MAJOR_VERSION $$QML_IMPORT_MINOR_VERSION
 qmlunfuck.input = UNFK_METATYPES_JSON
 qmlunfuck.output = $$UNFK_TYPEREGISTRATIONS
 qmlunfuck.variable_out = SOURCES
-qmltyperegistrar_compiler.name = QML Unfucker
-qmltyperegistrar_compiler.dependency_type = TYPE_C
+qmlunfuck.name = QML Unfucker
+qmlunfuck.dependency_type = TYPE_C
 
 QMAKE_EXTRA_COMPILERS += qmlunfuck

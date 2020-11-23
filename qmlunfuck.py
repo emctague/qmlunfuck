@@ -5,6 +5,7 @@ source_path = sys.argv[1]
 dest_path = sys.argv[2]
 import_name = sys.argv[3]
 import_major = sys.argv[4]
+import_minor = sys.argv[5]
 
 with open(source_path) as f:
     data = json.load(f)
@@ -26,5 +27,5 @@ with open(dest_path, 'w') as f:
 
     f.write('void __attribute__ ((constructor)) registerTypes() {\n')
     for t in types:
-        f.write(f'\tqmlRegisterType<{t}>("{import_name}", {import_major}, 0, "{t}");\n')
+        f.write(f'\tqmlRegisterType<{t}>("{import_name}", {import_major}, {import_minor}, "{t}");\n')
     f.write('}\n')

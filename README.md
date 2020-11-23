@@ -10,9 +10,9 @@ As a workaround, I present `qmlunfuck`. `qmlunfuck` generates C++ code that uses
    - `CONFIG += qmltypes` is present
    - You're setting `QML_IMPORT_NAME` and `QML_IMPORT_MAJOR_VERSION` correctly.
 
-2. Clone `qmlunfuck` into a subdirectory of your project.
+2. Make a `features` subdirectory under your project's main directory.
 
-3. Add the path to `qmlunfuck` to your `$$QMAKEFEATURES` project variable.
+3. Copy `qmlunfuck.prf` and `qmlunfuck.py` from this repository into that directory.
 
 4. Add `CONFIG += qmlunfuck` to your project.
 
@@ -20,10 +20,9 @@ As a workaround, I present `qmlunfuck`. `qmlunfuck` generates C++ code that uses
 
 ### Example QMake Config
 
-Assuming you cloned `qmlunfuck` to a subdirectory of your project called "qmlunfuck", your project's `.pro` file should have lines like these:
+Your project's `.pro` file should have lines like these:
 
 ```qmake
-QMAKEFEATURES += $$PWD/qmlunfuck
 CONFIG += qmltypes qmlunfuck
 
 QML_IMPORT_NAME = com.example.myproject
